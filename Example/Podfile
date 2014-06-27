@@ -1,0 +1,12 @@
+target 'BBSImageBackgroundView', :exclusive => true do
+  pod "BBSImageBackgroundView", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "BBSImageBackgroundView", :path => "../"
+
+  pod 'Specta', '~> 0.2.1'
+  pod 'Expecta'
+  pod 'FBSnapshotTestCase'
+  pod 'EXPMatchers+FBSnapshotTest'
+end
