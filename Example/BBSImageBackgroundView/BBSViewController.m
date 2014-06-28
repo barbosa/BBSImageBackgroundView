@@ -8,22 +8,27 @@
 
 #import "BBSViewController.h"
 
+#import "BBSBackgroundItem.h"
+#import "BBSImageBackgroundView.h"
+
 @interface BBSViewController ()
 
 @end
 
+
 @implementation BBSViewController
+
+- (void)loadView
+{
+    BBSBackgroundItem *item1 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"green-bike.jpg"]
+                                                         animationStyle:BBSBackgroundItemAnimationStyleNoAnimation];
+    
+    self.view = [[BBSImageBackgroundView alloc] initWithItems:@[item1]];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
