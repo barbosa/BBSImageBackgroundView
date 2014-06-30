@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, Direction) {
 
 - (void)drawRect:(CGRect)rect
 {
-    [self addSubview:self.imageView];
+    [self insertSubview:self.imageView atIndex:0];
     _imageView.frame = self.bounds;
     
     if (_items.count) {
