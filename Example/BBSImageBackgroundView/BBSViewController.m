@@ -31,4 +31,9 @@
     self.view = view;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+}
+
 @end

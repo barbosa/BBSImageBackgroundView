@@ -9,17 +9,33 @@
 #import "BBSImageBackgroundView.h"
 #import "BBSBackgroundItem.h"
 
+
+#pragma mark - Constants
+
 static NSTimeInterval const kDefaultTimeInterval = 8.0;
+
+
+#pragma mark - Definitions
+
+typedef NS_ENUM(NSInteger, Direction) {
+    LEFT = -1,
+    RIGHT = 1
+};
+
+
+#pragma mark - Class Extension
 
 @interface BBSImageBackgroundView ()
 {
-    BOOL _isPlaying;
-    __block NSUInteger currentIndex;
+    Direction _direction;
+    __block NSUInteger _currentIndex;
 }
 @property (nonatomic, strong) UIImageView *imageView;
 
 @end
 
+
+#pragma mark - Class implementation
 
 @implementation BBSImageBackgroundView
 
@@ -30,6 +46,7 @@ static NSTimeInterval const kDefaultTimeInterval = 8.0;
     self = [super init];
     if (self) {
         self.items = items;
+        _direction = LEFT;
     }
     return self;
 }
@@ -57,7 +74,8 @@ static NSTimeInterval const kDefaultTimeInterval = 8.0;
     [self addSubview:self.imageView];
     _imageView.frame = self.bounds;
     
-    if (!_isPlaying) {
+    if (_items.count) {
+        _imageView.image = [[_items firstObject] image];
         [self play];
     }
 }
@@ -66,32 +84,43 @@ static NSTimeInterval const kDefaultTimeInterval = 8.0;
 
 - (void)play
 {
-    _isPlaying = YES;
-    
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(changeCurrentImage:) userInfo:nil repeats:YES];
     [timer fire];
 }
 
 - (void)changeCurrentImage:(NSTimer *)timer
 {
-    NSLog(@"%lu", (unsigned long)currentIndex);
+    NSLog(@"%lu", (unsigned long)_currentIndex);
     
-    [UIView transitionWithView:_imageView
-                      duration:1.0
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^{
-                        UIImage *nextImage = [_items[currentIndex] image];
-                        _imageView.image = nextImage;
-                    } completion:^(BOOL finished) {
-                        currentIndex++;
-                        if (currentIndex == _items.count)
-                            currentIndex = 0;
-                    }];
+    CGAffineTransform transform = CGAffineTransformTranslate(_imageView.transform, _direction * 100, 0);
+    [UIView animateWithDuration:self.timeInterval animations:^{
+        _imageView.transform = transform;
+    } completion:^(BOOL finished) {
+        
+        [self toggleDirection];
+        
+        [UIView transitionWithView:_imageView
+                          duration:1.0
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+                            UIImage *nextImage = [_items[_currentIndex] image];
+                            _imageView.image = nextImage;
+                            
+                        } completion:^(BOOL finished) {
+                            _currentIndex++;
+                            if (_currentIndex == _items.count)
+                                _currentIndex = 0;
+                        }];
+    }];
 }
 
-- (void)stop
+- (void)toggleDirection
 {
-    _isPlaying = NO;
+    if (_direction == LEFT)
+        _direction = RIGHT;
+    else
+        _direction = LEFT;
 }
+
 
 @end
