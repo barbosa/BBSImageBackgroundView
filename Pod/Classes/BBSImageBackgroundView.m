@@ -68,19 +68,25 @@ static NSTimeInterval const kDefaultTimeInterval = 8.0;
 {
     _isPlaying = YES;
     
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(changeCurrentImage) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(changeCurrentImage:) userInfo:nil repeats:YES];
     [timer fire];
 }
 
-- (void)changeCurrentImage
+- (void)changeCurrentImage:(NSTimer *)timer
 {
     NSLog(@"%lu", (unsigned long)currentIndex);
-    UIImage *currentImage = [_items[currentIndex] image];
-    _imageView.image = currentImage;
     
-    currentIndex++;
-    if (currentIndex == _items.count)
-        currentIndex = 0;
+    [UIView transitionWithView:_imageView
+                      duration:1.0
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        UIImage *nextImage = [_items[currentIndex] image];
+                        _imageView.image = nextImage;
+                    } completion:^(BOOL finished) {
+                        currentIndex++;
+                        if (currentIndex == _items.count)
+                            currentIndex = 0;
+                    }];
 }
 
 - (void)stop
