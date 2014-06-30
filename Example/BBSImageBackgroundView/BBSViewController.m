@@ -22,13 +22,13 @@
 {
     BBSBackgroundItem *item1 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"green-bike.jpg"]
                                                          animationStyle:BBSBackgroundItemAnimationStyleNoAnimation];
+    BBSBackgroundItem *item2 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"greece.jpg"]
+                                                         animationStyle:BBSBackgroundItemAnimationStyleNoAnimation];
+    BBSBackgroundItem *item3 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"dude-walkin.jpg"]
+                                                         animationStyle:BBSBackgroundItemAnimationStyleNoAnimation];
     
-    self.view = [[BBSImageBackgroundView alloc] initWithItems:@[item1]];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+    BBSImageBackgroundView *view = [[BBSImageBackgroundView alloc] initWithItems:@[item1, item2, item3]];
+    self.view = view;
 }
 
 @end

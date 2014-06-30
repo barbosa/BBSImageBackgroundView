@@ -7,8 +7,18 @@
 //
 
 #import "BBSImageBackgroundView.h"
+#import "BBSBackgroundItem.h"
 
-static NSTimeInterval const kDefaultTimeInterval = 5.0;
+static NSTimeInterval const kDefaultTimeInterval = 8.0;
+
+@interface BBSImageBackgroundView ()
+{
+    BOOL _isPlaying;
+    __block NSUInteger currentIndex;
+}
+@property (nonatomic, strong) UIImageView *imageView;
+
+@end
 
 
 @implementation BBSImageBackgroundView
@@ -29,6 +39,53 @@ static NSTimeInterval const kDefaultTimeInterval = 5.0;
 - (NSTimeInterval)timeInterval
 {
     return _timeInterval ?: kDefaultTimeInterval;
+}
+
+- (UIImageView *)imageView
+{
+    if (!_imageView) {
+        self.imageView = [[UIImageView alloc] init];
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _imageView;
+}
+
+#pragma mark - Drawing
+
+- (void)drawRect:(CGRect)rect
+{
+    [self addSubview:self.imageView];
+    _imageView.frame = self.bounds;
+    
+    if (!_isPlaying) {
+        [self play];
+    }
+}
+
+#pragma mark - Animations
+
+- (void)play
+{
+    _isPlaying = YES;
+    
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(changeCurrentImage) userInfo:nil repeats:YES];
+    [timer fire];
+}
+
+- (void)changeCurrentImage
+{
+    NSLog(@"%lu", (unsigned long)currentIndex);
+    UIImage *currentImage = [_items[currentIndex] image];
+    _imageView.image = currentImage;
+    
+    currentIndex++;
+    if (currentIndex == _items.count)
+        currentIndex = 0;
+}
+
+- (void)stop
+{
+    _isPlaying = NO;
 }
 
 @end

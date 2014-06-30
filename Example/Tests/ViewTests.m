@@ -29,7 +29,7 @@ describe(@"BBSImageBackgroundView", ^{
         expect(_view.items[1]).equal(item2);
     });
     
-    it(@"should receive a interval between items", ^{
+    it(@"should receive an interval between items", ^{
         _view.timeInterval = 3.0;
         expect(@(_view.timeInterval)).equal(@3.0);
     });
