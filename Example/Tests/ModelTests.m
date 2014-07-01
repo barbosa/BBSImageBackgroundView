@@ -32,7 +32,7 @@ describe(@"Background item", ^{
     
     it(@"can be instantianted directly with an image and an animation style", ^{
         UIImage *fakeImage = [UIImage new];
-        BBSBackgroundItemAnimationStyle fakeAnimationStyle = BBSBackgroundItemAnimationStyleLeftToRight;
+        BBSBackgroundItemAnimationStyle fakeAnimationStyle = BBSBackgroundItemAnimationStyleNoAnimation;
         
         _item = [[BBSBackgroundItem alloc] initWithImage:fakeImage
                                           animationStyle:fakeAnimationStyle];
@@ -40,34 +40,6 @@ describe(@"Background item", ^{
         expect(_item.image).equal(fakeImage);
         expect(_item.animationStyle).equal(fakeAnimationStyle);
     });
-});
-
-describe(@"Background animation style", ^{
-    
-    it(@"should contain an option with no animation", ^{
-
-    });
-    
-    it(@"should contain an option with animation from left to right", ^{
-        
-    });
-    
-    it(@"should contain an option with animation from right to left", ^{
-        
-    });
-    
-    it(@"should contain an option with animation from top to bottom", ^{
-        
-    });
-    
-    it(@"should contain an option with animation from bottom to top", ^{
-        
-    });
-    
-    it(@"should contain an option with animation with zooming", ^{
-        
-    });
-    
 });
 
 SpecEnd

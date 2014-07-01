@@ -9,11 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, BBSBackgroundItemAnimationStyle) {
-    BBSBackgroundItemAnimationStyleNoAnimation = 0,
-    BBSBackgroundItemAnimationStyleLeftToRight,
-    BBSBackgroundItemAnimationStyleRightToLeft,
-    BBSBackgroundItemAnimationStyleTopToBottom,
-    BBSBackgroundItemAnimationStyleBottomToTop
+    BBSBackgroundItemAnimationStyleNoAnimation = 0
 };
 
 @interface BBSBackgroundItem : NSObject

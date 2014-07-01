@@ -34,8 +34,8 @@ describe(@"BBSImageBackgroundView", ^{
         expect(@(_view.timeInterval)).equal(@3.0);
     });
     
-    it(@"should have a default interval time of 5", ^{
-        expect(@(_view.timeInterval)).equal(@5.0);
+    it(@"should have a default interval time of 8", ^{
+        expect(@(_view.timeInterval)).equal(@8.0);
     });
     
     it(@"can be instantiated with an array of items", ^{
