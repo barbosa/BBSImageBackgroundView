@@ -41,6 +41,21 @@ typedef NS_ENUM(NSInteger, Direction) {
 
 #pragma mark - Constructors
 
+- (id)init
+{
+    return [self initWithItems:@[]];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.items = @[];
+        _direction = LEFT;
+    }
+    return self;
+}
+
 - (instancetype)initWithItems:(NSArray *)items
 {
     self = [super init];
@@ -76,22 +91,14 @@ typedef NS_ENUM(NSInteger, Direction) {
     
     if (_items.count) {
         _imageView.image = [[_items firstObject] image];
-        [self play];
+        [self changeCurrentImage];
     }
 }
 
 #pragma mark - Animations
 
-- (void)play
-{
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.timeInterval target:self selector:@selector(changeCurrentImage:) userInfo:nil repeats:YES];
-    [timer fire];
-}
-
-- (void)changeCurrentImage:(NSTimer *)timer
-{
-    NSLog(@"%lu", (unsigned long)_currentIndex);
-    
+- (void)changeCurrentImage
+{   
     CGAffineTransform transform = CGAffineTransformTranslate(_imageView.transform, _direction * 100, 0);
     [UIView animateWithDuration:self.timeInterval animations:^{
         _imageView.transform = transform;
@@ -99,17 +106,18 @@ typedef NS_ENUM(NSInteger, Direction) {
         
         [self toggleDirection];
         
+        _currentIndex++;
+        if (_currentIndex == _items.count)
+            _currentIndex = 0;
+        
+        UIImage *nextImage = [_items[_currentIndex] image];
         [UIView transitionWithView:_imageView
                           duration:1.0
                            options:UIViewAnimationOptionTransitionCrossDissolve
                         animations:^{
-                            UIImage *nextImage = [_items[_currentIndex] image];
                             _imageView.image = nextImage;
-                            
                         } completion:^(BOOL finished) {
-                            _currentIndex++;
-                            if (_currentIndex == _items.count)
-                                _currentIndex = 0;
+                            [self changeCurrentImage];
                         }];
     }];
 }
@@ -121,6 +129,5 @@ typedef NS_ENUM(NSInteger, Direction) {
     else
         _direction = LEFT;
 }
-
 
 @end
