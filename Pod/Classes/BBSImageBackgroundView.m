@@ -27,6 +27,7 @@ typedef NS_ENUM(NSInteger, Direction) {
 
 @interface BBSImageBackgroundView ()
 {
+    BOOL _loaded;
     Direction _direction;
     __block NSUInteger _currentIndex;
 }
@@ -86,12 +87,16 @@ typedef NS_ENUM(NSInteger, Direction) {
 
 - (void)drawRect:(CGRect)rect
 {
-    [self insertSubview:self.imageView atIndex:0];
-    _imageView.frame = self.bounds;
+    if (!_loaded) {
+        [self insertSubview:self.imageView atIndex:0];
+        _imageView.frame = self.bounds;
     
-    if (_items.count) {
-        _imageView.image = [[_items firstObject] image];
-        [self changeCurrentImage];
+        if (_items.count) {
+            _imageView.image = [[_items firstObject] image];
+            [self changeCurrentImage];
+        }
+        
+        _loaded = YES;
     }
 }
 
