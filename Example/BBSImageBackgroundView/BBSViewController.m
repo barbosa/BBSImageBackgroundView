@@ -12,6 +12,9 @@
 #import "BBSImageBackgroundView.h"
 
 @interface BBSViewController () <UIAlertViewDelegate>
+{
+    CAGradientLayer *gradient;
+}
 @property (nonatomic, weak) IBOutlet UIButton *gradientButton;
 @end
 
@@ -22,8 +25,7 @@
 {
     [super viewDidLoad];
     
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = _gradientButton.bounds;
+    gradient = [CAGradientLayer layer];
     gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor clearColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
     [_gradientButton.layer insertSublayer:gradient atIndex:0];
     
@@ -59,6 +61,12 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+- (BOOL)shouldAutorotate
+{
+    gradient.frame = _gradientButton.bounds;
+    return YES;
 }
 
 @end
