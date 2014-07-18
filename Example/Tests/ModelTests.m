@@ -30,7 +30,16 @@ describe(@"Background item", ^{
         expect(@(_item.animationStyle)).equal(@(animationStyle));
     });
     
-    it(@"can be instantianted directly with an image and an animation style", ^{
+    it(@"can be instantiated directly with an image", ^{
+        UIImage *fakeImage = [UIImage new];
+        
+        _item = [[BBSBackgroundItem alloc] initWithImage:fakeImage];
+        
+        expect(_item.image).equal(fakeImage);
+        expect(_item.animationStyle).equal(BBSBackgroundItemAnimationStyleNoAnimation);
+    });
+    
+    it(@"can be instantiated directly with an image and an animation style", ^{
         UIImage *fakeImage = [UIImage new];
         BBSBackgroundItemAnimationStyle fakeAnimationStyle = BBSBackgroundItemAnimationStyleNoAnimation;
         

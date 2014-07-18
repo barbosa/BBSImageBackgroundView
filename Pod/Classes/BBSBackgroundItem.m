@@ -11,6 +11,11 @@
 @implementation BBSBackgroundItem
 
 - (instancetype)initWithImage:(UIImage *)image
+{
+    return [self initWithImage:image animationStyle:BBSBackgroundItemAnimationStyleNoAnimation];
+}
+
+- (instancetype)initWithImage:(UIImage *)image
                animationStyle:(BBSBackgroundItemAnimationStyle)animationStyle
 {
     self = [super init];

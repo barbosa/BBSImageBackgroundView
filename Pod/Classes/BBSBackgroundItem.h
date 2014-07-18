@@ -17,6 +17,8 @@ typedef NS_ENUM(NSUInteger, BBSBackgroundItemAnimationStyle) {
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) BBSBackgroundItemAnimationStyle animationStyle;
 
+- (instancetype)initWithImage:(UIImage *)image;
+
 - (instancetype)initWithImage:(UIImage *)image
                animationStyle:(BBSBackgroundItemAnimationStyle)animationStyle;
 

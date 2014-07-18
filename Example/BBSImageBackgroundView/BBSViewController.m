@@ -25,20 +25,20 @@
 {
     [super viewDidLoad];
     
+    BBSBackgroundItem *item1 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"green-bike.jpg"]];
+    BBSBackgroundItem *item2 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"greece.jpg"]];
+    BBSBackgroundItem *item3 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"dude-walkin.jpg"]];
+    
+    [(BBSImageBackgroundView *)self.view setItems:@[item1, item2, item3]];
+    
+    [self addGradientLayer];
+}
+
+- (void)addGradientLayer
+{
     gradient = [CAGradientLayer layer];
     gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor clearColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
     [_gradientButton.layer insertSublayer:gradient atIndex:0];
-    
-    
-    BBSBackgroundItem *item1 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"green-bike.jpg"]
-                                                         animationStyle:BBSBackgroundItemAnimationStyleNoAnimation];
-    BBSBackgroundItem *item2 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"greece.jpg"]
-                                                         animationStyle:BBSBackgroundItemAnimationStyleNoAnimation];
-    BBSBackgroundItem *item3 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"dude-walkin.jpg"]
-                                                         animationStyle:BBSBackgroundItemAnimationStyleNoAnimation];
-    
-    BBSImageBackgroundView *view = (BBSImageBackgroundView *)self.view;
-    view.items = @[item1, item2, item3];
 }
 
 - (IBAction)openConfirmationAlert
