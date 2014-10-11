@@ -23,22 +23,12 @@ describe(@"Background item", ^{
         _item.image = fakeImage;
         expect(_item.image).equal(fakeImage);
     });
-    
-    it(@"responds to an animation style", ^{
-        BBSBackgroundItemAnimationStyle animationStyle = BBSBackgroundItemAnimationStyleNoAnimation;
-        _item.animationStyle = animationStyle;
-        expect(@(_item.animationStyle)).equal(@(animationStyle));
-    });
-    
-    it(@"can be instantianted directly with an image and an animation style", ^{
+
+    it(@"can be instantianted directly with an image", ^{
         UIImage *fakeImage = [UIImage new];
-        BBSBackgroundItemAnimationStyle fakeAnimationStyle = BBSBackgroundItemAnimationStyleNoAnimation;
-        
-        _item = [[BBSBackgroundItem alloc] initWithImage:fakeImage
-                                          animationStyle:fakeAnimationStyle];
+        _item = [[BBSBackgroundItem alloc] initWithImage:fakeImage];
         
         expect(_item.image).equal(fakeImage);
-        expect(_item.animationStyle).equal(fakeAnimationStyle);
     });
 });
 
