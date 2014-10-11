@@ -108,10 +108,20 @@ typedef NS_ENUM(NSInteger, Direction) {
     } completion:^(BOOL finished) {
         
         [self toggleDirection];
-        
+
+        NSUInteger fromIndex = _currentIndex;
+
         _currentIndex++;
         if (_currentIndex == _items.count)
             _currentIndex = 0;
+
+        NSUInteger toIndex = _currentIndex;
+
+        if ([_delegate respondsToSelector:@selector(imageBackgroundView:willChangeFromItem:toItem:)]) {
+            [_delegate imageBackgroundView:self
+                        willChangeFromItem:_items[fromIndex]
+                                    toItem:_items[toIndex]];
+        }
         
         UIImage *nextImage = [_items[_currentIndex] image];
         [UIView transitionWithView:_imageView
@@ -120,6 +130,11 @@ typedef NS_ENUM(NSInteger, Direction) {
                         animations:^{
                             _imageView.image = nextImage;
                         } completion:^(BOOL finished) {
+                            if ([_delegate respondsToSelector:@selector(imageBackgroundView:didChangeFromItem:toItem:)]) {
+                                [_delegate imageBackgroundView:self
+                                             didChangeFromItem:_items[fromIndex]
+                                                        toItem:_items[toIndex]];
+                            }
                             [self changeCurrentImage];
                         }];
     }];

@@ -10,7 +10,7 @@
 
 #import "BBSImageBackgroundView.h"
 
-@interface BBSViewController () <UIAlertViewDelegate>
+@interface BBSViewController () <UIAlertViewDelegate, BBSImageBackgroundViewDelegate>
 @property (nonatomic, weak) IBOutlet UIButton *gradientButton;
 @end
 
@@ -32,6 +32,7 @@
     BBSBackgroundItem *item3 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"dude-walkin.jpg"]];
     
     BBSImageBackgroundView *view = (BBSImageBackgroundView *)self.view;
+    view.delegate = self;
     view.items = @[item1, item2, item3];
 }
 
@@ -55,6 +56,22 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - BBSImageBackgroundViewDelegate
+
+- (void)imageBackgroundView:(BBSImageBackgroundView *)imageBackgroundView
+         willChangeFromItem:(BBSBackgroundItem *)fromItem
+                     toItem:(BBSBackgroundItem *)toItem
+{
+    NSLog(@"Will change image");
+}
+
+- (void)imageBackgroundView:(BBSImageBackgroundView *)imageBackgroundView
+          didChangeFromItem:(BBSBackgroundItem *)fromItem
+                     toItem:(BBSBackgroundItem *)toItem
+{
+    NSLog(@"Did change image");
 }
 
 @end
