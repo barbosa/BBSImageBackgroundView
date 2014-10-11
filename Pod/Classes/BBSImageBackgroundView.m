@@ -7,8 +7,6 @@
 //
 
 #import "BBSImageBackgroundView.h"
-#import "BBSBackgroundItem.h"
-
 
 #pragma mark - Constants
 

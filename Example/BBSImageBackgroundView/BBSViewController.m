@@ -8,7 +8,6 @@
 
 #import "BBSViewController.h"
 
-#import "BBSBackgroundItem.h"
 #import "BBSImageBackgroundView.h"
 
 @interface BBSViewController () <UIAlertViewDelegate>
