@@ -1,17 +1,11 @@
 PODS:
   - BBSImageBackgroundView (0.1.0)
   - Expecta (0.3.0)
-  - Expecta+Snapshots (1.2.1):
-    - Expecta
-    - FBSnapshotTestCase
-  - FBSnapshotTestCase (1.1)
   - Specta (0.2.1)
 
 DEPENDENCIES:
   - BBSImageBackgroundView (from `../`)
   - Expecta
-  - Expecta+Snapshots
-  - FBSnapshotTestCase
   - Specta (~> 0.2.1)
 
 EXTERNAL SOURCES:
@@ -21,8 +15,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   BBSImageBackgroundView: 1fe0c4904ee18231c53afb7a5cf790afaeb428a0
   Expecta: ce8a51b9fad15a2cd573b291cb2909aaed865350
-  Expecta+Snapshots: 30c28e3d8104665ee70e32df1cfc030bb37a8a6c
-  FBSnapshotTestCase: 9053afee1d66b4c7c313fcb0ae582a5e47bea9d0
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
 
 COCOAPODS: 0.33.1
