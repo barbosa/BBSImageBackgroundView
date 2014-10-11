@@ -28,12 +28,9 @@
     [_gradientButton.layer insertSublayer:gradient atIndex:0];
     
     
-    BBSBackgroundItem *item1 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"green-bike.jpg"]
-                                                         animationStyle:BBSBackgroundItemAnimationStyleNoAnimation];
-    BBSBackgroundItem *item2 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"greece.jpg"]
-                                                         animationStyle:BBSBackgroundItemAnimationStyleNoAnimation];
-    BBSBackgroundItem *item3 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"dude-walkin.jpg"]
-                                                         animationStyle:BBSBackgroundItemAnimationStyleNoAnimation];
+    BBSBackgroundItem *item1 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"green-bike.jpg"]];
+    BBSBackgroundItem *item2 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"greece.jpg"]];
+    BBSBackgroundItem *item3 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"dude-walkin.jpg"]];
     
     BBSImageBackgroundView *view = (BBSImageBackgroundView *)self.view;
     view.items = @[item1, item2, item3];

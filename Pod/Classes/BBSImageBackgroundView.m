@@ -1,9 +1,9 @@
 //
 //  BBSImageBackgroundView.m
-//  Pods
+//  BBSImageBackgroundView
 //
 //  Created by Gustavo Barbosa on 6/28/14.
-//
+//  Copyright (c) 2014 Gustavo Barbosa. All rights reserved.
 //
 
 #import "BBSImageBackgroundView.h"
