@@ -27,6 +27,7 @@
 		CB5CE21E2AA347AFBC99A13F /* libPods-BBSImageBackgroundView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F7FAD6C6644611BE4F615B /* libPods-BBSImageBackgroundView.a */; };
 		CDDD2D40ECB6473385033B6C /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CDAF1A7EF63449B83FF1A61 /* libPods-Tests.a */; };
 		E49ED43B19EB5062006194CB /* BBSBackgroundItemSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E49ED43A19EB5062006194CB /* BBSBackgroundItemSpec.m */; };
+		E49ED43D19EB5685006194CB /* BBSImageBackgroundViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = E49ED43C19EB5685006194CB /* BBSImageBackgroundViewSpec.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		8A2474E5B2E6474CB77D1A97 /* Pods-BBSImageBackgroundView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BBSImageBackgroundView.xcconfig"; path = "Pods/Pods-BBSImageBackgroundView.xcconfig"; sourceTree = "<group>"; };
 		D7F7FAD6C6644611BE4F615B /* libPods-BBSImageBackgroundView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BBSImageBackgroundView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E49ED43A19EB5062006194CB /* BBSBackgroundItemSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSBackgroundItemSpec.m; sourceTree = "<group>"; };
+		E49ED43C19EB5685006194CB /* BBSImageBackgroundViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSImageBackgroundViewSpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			children = (
 				6003F5B6195388D20070C39A /* Supporting Files */,
 				E49ED43A19EB5062006194CB /* BBSBackgroundItemSpec.m */,
+				E49ED43C19EB5685006194CB /* BBSImageBackgroundViewSpec.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E49ED43B19EB5062006194CB /* BBSBackgroundItemSpec.m in Sources */,
+				E49ED43D19EB5685006194CB /* BBSImageBackgroundViewSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

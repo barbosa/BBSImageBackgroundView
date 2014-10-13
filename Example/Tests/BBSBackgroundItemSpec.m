@@ -6,32 +6,23 @@
 //  Copyright 2014 Gustavo Barbosa. All rights reserved.
 //
 
-#import "Specta.h"
 #import "BBSBackgroundItem.h"
-
 
 SpecBegin(BBSBackgroundItem)
 
 describe(@"BBSBackgroundItem", ^{
     
-    beforeAll(^{
-
-    });
-    
-    beforeEach(^{
- 
-    });
-    
-    it(@"", ^{
-        assert(NO);
+    it(@"should have an image property", ^{
+        UIImage *image = [UIImage new];
+        BBSBackgroundItem *item = [BBSBackgroundItem new];
+        item.image = image;
+        assert(item.image == image);
     });  
-    
-    afterEach(^{
 
-    });
-    
-    afterAll(^{
-
+    it(@"can be instantiated passing an image", ^{
+        UIImage *image = [UIImage new];
+        BBSBackgroundItem *item = [[BBSBackgroundItem alloc] initWithImage:image];
+        assert(item.image == image);
     });
 });
 
