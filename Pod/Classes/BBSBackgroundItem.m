@@ -19,4 +19,9 @@
     return self;
 }
 
++ (instancetype)itemWithImage:(UIImage *)image
+{
+    return [[self alloc] initWithImage:image];
+}
+
 @end

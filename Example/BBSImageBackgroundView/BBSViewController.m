@@ -7,11 +7,13 @@
 //
 
 #import "BBSViewController.h"
-
 #import "BBSImageBackgroundView.h"
 
+
 @interface BBSViewController () <UIAlertViewDelegate, BBSImageBackgroundViewDelegate>
+
 @property (nonatomic, weak) IBOutlet UIButton *gradientButton;
+
 @end
 
 
@@ -23,13 +25,14 @@
     
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = _gradientButton.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor clearColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
+    gradient.colors = @[(id)[[UIColor clearColor] CGColor],
+                        (id)[[UIColor blackColor] CGColor]];
     [_gradientButton.layer insertSublayer:gradient atIndex:0];
     
-    
-    BBSBackgroundItem *item1 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"green-bike.jpg"]];
-    BBSBackgroundItem *item2 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"greece.jpg"]];
-    BBSBackgroundItem *item3 = [[BBSBackgroundItem alloc] initWithImage:[UIImage imageNamed:@"dude-walkin.jpg"]];
+    NSArray *imageNames = @[@"green-bike.jpg", @"greece.jpg", @"dude-walkin.jpg"];
+    BBSBackgroundItem *item1 = [BBSBackgroundItem itemWithImage:[UIImage imageNamed:imageNames[0]]];
+    BBSBackgroundItem *item2 = [BBSBackgroundItem itemWithImage:[UIImage imageNamed:imageNames[1]]];
+    BBSBackgroundItem *item3 = [BBSBackgroundItem itemWithImage:[UIImage imageNamed:imageNames[2]]];
     
     BBSImageBackgroundView *view = (BBSImageBackgroundView *)self.view;
     view.delegate = self;
@@ -38,8 +41,9 @@
 
 - (IBAction)openConfirmationAlert
 {
+    NSString *message = @"Do you want to open Safari and view more awesome photos?";
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hey!"
-                                                    message:@"Do you want to open Safari and view more awesome photos?"
+                                                    message:message
                                                    delegate:self
                                           cancelButtonTitle:@"No"
                                           otherButtonTitles:@"Yes", nil];

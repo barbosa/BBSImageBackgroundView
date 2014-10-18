@@ -16,13 +16,19 @@ describe(@"BBSBackgroundItem", ^{
         UIImage *image = [UIImage new];
         BBSBackgroundItem *item = [BBSBackgroundItem new];
         item.image = image;
-        assert(item.image == image);
+        expect(item.image).to.equal(image);
     });  
 
     it(@"can be instantiated passing an image", ^{
         UIImage *image = [UIImage new];
         BBSBackgroundItem *item = [[BBSBackgroundItem alloc] initWithImage:image];
-        assert(item.image == image);
+        expect(item.image).to.equal(image);
+    });
+    
+    it(@"can be instantiated via its helpful class method using an image", ^{
+        UIImage *image = [UIImage new];
+        BBSBackgroundItem *item = [BBSBackgroundItem itemWithImage:image];
+        expect(item.image).to.equal(image);
     });
 });
 

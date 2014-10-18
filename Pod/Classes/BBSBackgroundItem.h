@@ -13,5 +13,6 @@
 @property (nonatomic, strong) UIImage *image;
 
 - (instancetype)initWithImage:(UIImage *)image;
++ (instancetype)itemWithImage:(UIImage *)image;
 
 @end
